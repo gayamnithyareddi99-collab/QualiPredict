@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QualiPredict – Predict Quality. Prevent Failure.</title>
+
+<style>
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI", Arial, sans-serif;
+}
+
+html,body{
+  width:100%;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+}
+
+/* ================= COLORS ================= */
+:root{
+  --dark:#0b1220;
+  --dark2:#020617;
+  --blue:#0ea5e9;
+  --cyan:#22d3ee;
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+}
+
+/* ================= NAVBAR ================= */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(2,6,23,0.9);
+  backdrop-filter:blur(8px);
+  padding:16px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:900;
+  color:#ffffff;
+}
+.logo span{color:var(--cyan);}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:26px;
+}
+
+nav a{
+  text-decoration:none;
+  font-size:14px;
+  font-weight:700;
+  color:#cbd5e1;
+}
+nav a:hover{color:var(--cyan);}
+
+/* ================= HERO ================= */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding-top:90px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(8,14,32,0.96) 0%,
+      rgba(8,14,32,0.88) 45%,
+      rgba(8,14,32,0.55) 75%,
+      rgba(8,14,32,0.25) 100%
+    ),
+    url("0001.jpeg");
+  background-size:cover;
+  background-position:center;
+}
+
+.hero-content{
+  max-width:860px;
+  padding-left:00%;
+  padding-right:4%;
+  color:#ffffff;
+}
+
+.hero-tag{
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:1.6px;
+  color:var(--cyan);
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-size:56px;
+  font-weight:900;
+  line-height:1.15;
+  margin-bottom:22px;
+}
+
+.hero h1 span{color:var(--blue);}
+
+.hero p{
+  font-size:18.5px;
+  line-height:1.75;
+  color:var(--text);
+  max-width:640px;
+  margin-bottom:28px;
+}
+
+.hero-features{
+  list-style:none;
+  margin-bottom:36px;
+}
+
+.hero-features li{
+  font-size:16.5px;
+  margin-bottom:10px;
+  font-weight:600;
+}
+.hero-features li::before{
+  content:"✔";
+  color:var(--cyan);
+  margin-right:10px;
+}
+
+.hero-btns{
+  display:flex;
+  gap:18px;
+}
+
+.btn-primary{
+  background:var(--blue);
+  color:#fff;
+  padding:15px 40px;
+  font-weight:900;
+  text-decoration:none;
+  border-radius:4px;
+}
+.btn-primary:hover{background:#0284c7;}
+
+.btn-outline{
+  background:#ffffff;
+  color:var(--blue);
+  border:2px solid #ffffff;
+  padding:15px 40px;
+  font-weight:900;
+  text-decoration:none;
+  border-radius:4px;
+}
+
+.btn-outline:hover{
+  background:#e0f2fe;
+  color:#0284c7;
+}
+
+/* ================= SECTIONS ================= */
+section{
+  padding:110px 8%;
+}
+
+/* ================= ABOUT ================= */
+.about{
+  background:#ffffff;
+  text-align:center;
+}
+
+.about h2{
+  font-size:42px;
+  font-weight:900;
+  color:#020617;
+  margin-bottom:22px;
+}
+.about h2 span{color:var(--blue);}
+
+.about p{
+  max-width:820px;
+  margin:auto;
+  font-size:18px;
+  line-height:1.75;
+  color:#334155;
+}
+
+/* ================= FEATURES ================= */
+.features{
+  background:#f8fafc;
+}
+
+.features-grid{
+  max-width:1100px;
+  margin:60px auto 0;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:32px;
+}
+
+.feature-box{
+  background:#ffffff;
+  padding:34px;
+  border-left:5px solid var(--blue);
+  box-shadow:0 14px 36px rgba(0,0,0,0.08);
+}
+
+.feature-box h3{
+  font-size:20px;
+  font-weight:900;
+  margin-bottom:10px;
+  color:#020617;
+}
+
+.feature-box p{
+  font-size:16px;
+  line-height:1.6;
+  color:#475569;
+}
+
+
+
+/* ================= ETHICAL AI ================= */
+.ethical{
+  background:#ffffff;
+  text-align:center;
+}
+
+.ethical h2{
+  font-size:44px;
+  font-weight:900;
+  margin-bottom:22px;
+}
+.ethical h2 span{color:var(--blue);}
+
+.ethical p{
+  max-width:820px;
+  margin:auto;
+  font-size:18px;
+  line-height:1.75;
+  color:#334155;
+}
+
+/* ================= CTA ================= */
+.cta{
+  background:
+    linear-gradient(90deg, rgba(2,6,23,0.95), rgba(2,6,23,0.9)),
+    url("https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=2400&auto=format&fit=crop");
+  background-size:cover;
+  text-align:center;
+  color:#ffffff;
+}
+
+.cta h2{
+  font-size:44px;
+  font-weight:900;
+  margin-bottom:22px;
+}
+.cta h2 span{color:var(--cyan);}
+
+.cta p{
+  font-size:18px;
+  max-width:720px;
+  margin:0 auto 36px;
+  color:#e5e7eb;
+}
+
+/* ================= FOOTER ================= */
+footer{
+  background:#020617;
+  color:#94a3b8;
+  text-align:center;
+  padding:24px;
+  font-size:14px;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:900px){
+  .hero h1{font-size:36px;}
+  .features-grid{grid-template-columns:1fr;}
+  nav ul{display:none;}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">Quali<span>Predict</span></div>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#use">Use Cases</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-tag">AI-POWERED QUALITY INTELLIGENCE</div>
+
+<h1>
+  Predict Quality.<br>
+  <span>Prevent Costly Failures.</span>
+</h1>
+
+<p>
+  QualiPredict helps manufacturing and agro-food SMEs move from
+  reactive quality checks to proactive defect prevention.
+  Our AI models detect risks early, explain root causes,
+  and support compliance without expensive hardware or complexity.
+</p>
+    <ul class="hero-features">
+      <li>Early defect & failure prediction</li>
+      <li>Root cause & process variation analysis</li>
+      <li>Waste reduction & compliance intelligence</li>
+      <li>Explainable, SME-friendly AI</li>
+    </ul>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Request Demo</a>
+      <a href="#features" class="btn-outline">Learn More</a>
+    </div>
+  </div>
+  
+</section>
+
+<!-- ================= ABOUT + FOUNDER ================= -->
+<section class="about-founder" id="about">
+
+  <div class="about-wrap">
+
+    <!-- ABOUT CONTENT -->
+    <div class="about-content">
+      <span class="about-tag">ABOUT QUALIPREDICT</span>
+
+      <h2>
+        Built to <span>Predict Quality</span><br>
+        Before Failure Happens
+      </h2>
+
+      <p class="about-lead">
+        QualiPredict is an AI-powered predictive quality analytics platform
+        designed to help manufacturing and agro-food SMEs detect defects early,
+        reduce waste, and maintain compliance with confidence.
+      </p>
+
+      <p>
+        In fast-moving production environments, quality issues are often
+        discovered too late  after losses occur. QualiPredict changes this
+        by combining real-time operational data, advanced analytics, and
+        explainable AI models to highlight risks before they turn into failures.
+      </p>
+
+      <p>
+        Our approach focuses on <strong>practical intelligence</strong>
+        supporting engineers, operators, and decision-makers with clear,
+        actionable insights rather than black-box automation.
+      </p>
+    </div>
+
+    <!-- FOUNDER CARD -->
+    <div class="founder-card">
+
+      <div class="founder-header">
+        <h3>Founder</h3>
+      </div>
+
+      <div class="founder-body">
+        <h4>Vishnu B Modhpatel</h4>
+        <span>Founder · Data & Quality Analytics</span>
+
+        <p>
+          Vishnu brings a strong blend of <strong>manufacturing engineering</strong>
+          and <strong>data analytics</strong> experience. His experience on the factory floor gives him a deep understanding of the real operational challenges organisations face when trying to maintain consistent quality.
+        </p>
+
+        <p>
+          He founded <strong> QualiPredict to turn complex production data into clear, practical quality decisions.</strong> QualiPredict is built to deliver accessible and explainable predictive quality analytics, helping organisations reduce defects, improve reliability, and ensure compliance without adding operational complexity.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+/* ================= ABOUT + FOUNDER ================= */
+
+.about-founder{
+  padding:110px 8%;
+  background:#ffffff;
+}
+
+.about-wrap{
+  max-width:1200px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1.2fr 0.8fr;
+  gap:60px;
+  align-items:flex-start;
+}
+
+/* ABOUT CONTENT */
+.about-tag{
+  display:inline-block;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:1.5px;
+  color:#0ea5e9;
+  margin-bottom:16px;
+}
+
+.about-content h2{
+  font-size:44px;
+  line-height:1.15;
+  font-weight:900;
+  color:#020617;
+  margin-bottom:22px;
+}
+
+.about-content h2 span{
+  color:#0ea5e9;
+}
+
+.about-lead{
+  font-size:19px;
+  font-weight:700;
+  color:#1f2937;
+  margin-bottom:18px;
+}
+
+.about-content p{
+  font-size:17.5px;
+  line-height:1.75;
+  color:#334155;
+  margin-bottom:14px;
+}
+
+/* FOUNDER CARD */
+.founder-card{
+  background:#f8fafc;
+  border-left:6px solid #22d3ee;
+  box-shadow:0 18px 48px rgba(0,0,0,0.08);
+}
+
+.founder-header{
+  background:#020617;
+  padding:18px 22px;
+}
+
+.founder-header h3{
+  font-size:18px;
+  font-weight:900;
+  color:#ffffff;
+  letter-spacing:1px;
+}
+
+.founder-body{
+  padding:30px;
+}
+
+.founder-body h4{
+  font-size:22px;
+  font-weight:900;
+  color:#020617;
+  margin-bottom:6px;
+}
+
+.founder-body span{
+  display:block;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:0.6px;
+  color:#0ea5e9;
+  margin-bottom:18px;
+}
+
+.founder-body p{
+  font-size:16.5px;
+  line-height:1.65;
+  color:#475569;
+  margin-bottom:14px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .about-wrap{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+
+  .about-content h2{
+    font-size:32px;
+  }
+}
+</style>
+
+<script>
+console.log("About + Founder section loaded");
+</script>
+<!-- ================= LEARN MORE ================= -->
+<section class="learn-clean" id="learn-more">
+
+  <div class="learn-wrap">
+
+    <!-- LEFT CONTENT -->
+    <div class="learn-left">
+      <span class="learn-label">LEARN MORE</span>
+
+      <h2>
+        Quality Problems<br>
+        <span>Start Before You See Them</span>
+      </h2>
+
+      <p>
+        In manufacturing and agro-food operations, quality failures rarely
+        happen without warning. Small process variations and unnoticed trends
+        quietly build risk over time.
+      </p>
+
+      <p>
+        QualiPredict continuously analyses operational data to surface early
+        indicators of instability, helping teams act before defects, waste,
+        or compliance issues occur.
+      </p>
+
+      <a href="#features" class="learn-link">
+        Learn how QualiPredict works →
+      </a>
+    </div>
+
+    <!-- RIGHT INSIGHT BLOCK -->
+    <div class="learn-right">
+
+      <div class="insight">
+        <h3>
+          <span class="tick">✔</span>
+          Early Visibility
+        </h3>
+        <p>
+          Identify hidden quality risks before they impact production
+          or customers.
+        </p>
+      </div>
+
+      <div class="insight">
+        <h3>
+          <span class="tick">✔</span>
+          Operational Clarity
+        </h3>
+        <p>
+          Understand where variation comes from and why processes drift
+          over time.
+        </p>
+      </div>
+
+      <div class="insight">
+        <h3>
+          <span class="tick">✔</span>
+          Confident Decisions
+        </h3>
+        <p>
+          Support day-to-day quality actions with explainable,
+          data-driven analytics.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+/* ================= LEARN CLEAN ================= */
+
+.learn-clean{
+  padding:110px 8%;
+  background:#eef6ff; /* soft blue background */
+}
+
+.learn-wrap{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:70px;
+  align-items:flex-start;
+}
+
+/* LEFT */
+.learn-label{
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:1.4px;
+  color:#0ea5e9;
+  margin-bottom:16px;
+  display:inline-block;
+}
+
+.learn-left h2{
+  font-size:42px;
+  font-weight:900;
+  line-height:1.2;
+  color:#020617;
+  margin-bottom:22px;
+}
+
+.learn-left h2 span{
+  color:#0ea5e9;
+}
+
+.learn-left p{
+  font-size:18px;
+  line-height:1.75;
+  color:#334155;
+  margin-bottom:14px;
+}
+
+.learn-link{
+  display:inline-block;
+  margin-top:18px;
+  font-size:15px;
+  font-weight:900;
+  color:#0ea5e9;
+  text-decoration:none;
+}
+
+.learn-link:hover{
+  text-decoration:underline;
+}
+
+/* RIGHT */
+.learn-right{
+  border-left:3px solid #cfe8ff;
+  padding-left:40px;
+  position:relative;
+}
+
+/* decorative accent */
+.learn-right::before{
+  content:"";
+  position:absolute;
+  left:-3px;
+  top:0;
+  width:3px;
+  height:60px;
+  background:#0ea5e9;
+}
+
+.insight{
+  margin-bottom:34px;
+}
+
+.insight h3{
+  font-size:18px;
+  font-weight:900;
+  color:#020617;
+  margin-bottom:6px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.tick{
+  color:#0ea5e9;
+  font-size:18px;
+}
+
+.insight p{
+  font-size:16.5px;
+  line-height:1.6;
+  color:#475569;
+  margin-left:28px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .learn-wrap{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+
+  .learn-right{
+    border-left:none;
+    padding-left:0;
+    border-top:3px solid #cfe8ff;
+    padding-top:32px;
+  }
+
+  .learn-right::before{
+    left:0;
+    top:-3px;
+    width:60px;
+    height:3px;
+  }
+
+  .learn-left h2{
+    font-size:32px;
+  }
+
+  .insight p{
+    margin-left:0;
+  }
+}
+</style>
+
+<script>
+console.log("Learn More section updated – blue background, no button");
+</script>
+<!-- ================= FEATURES : FLOW MODEL ================= -->
+<section class="features-flow" id="features">
+
+  <!-- Heading -->
+  <div class="flow-head">
+    <span class="flow-tag">FEATURES</span>
+    <h2>
+      Quality Intelligence That<br>
+      <span>Moves Before Failure</span>
+    </h2>
+    <p>
+      QualiPredict continuously monitors production behaviour,
+      detects early warning signals, and supports preventive
+      quality action before defects occur.
+    </p>
+  </div>
+
+  <!-- Flow Body -->
+  <div class="flow-wrapper">
+
+    <!-- FLOW LINE -->
+    <div class="flow-line">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+    <!-- FLOW CONTENT -->
+    <div class="flow-content">
+
+      <div class="flow-step active">
+        <h3>Early Quality Signals</h3>
+        <p>
+          Detect subtle deviations in process behaviour that
+          indicate future quality failures.
+        </p>
+      </div>
+
+      <div class="flow-step">
+        <h3>Root Cause Visibility</h3>
+        <p>
+          Understand where variation starts and how it propagates
+          across production stages.
+        </p>
+      </div>
+
+      <div class="flow-step">
+        <h3>Predictive Alerts</h3>
+        <p>
+          Receive timely alerts before defects, scrap, or rework
+          impact production output.
+        </p>
+      </div>
+
+      <div class="flow-step">
+        <h3>Explainable Insights</h3>
+        <p>
+          Every prediction is backed by transparent logic,
+          helping teams trust and act on insights.
+        </p>
+      </div>
+
+      <div class="flow-step">
+        <h3>Preventive Action</h3>
+        <p>
+          Support proactive decision-making without disrupting
+          existing operational workflows.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+/* ================= FEATURES FLOW ================= */
+.features-flow{
+  background:#0b1220;
+  color:#ffffff;
+  padding:110px 8%;
+}
+
+/* HEADING */
+.flow-head{
+  max-width:760px;
+  margin-bottom:80px;
+}
+
+.flow-tag{
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:1.6px;
+  color:#22d3ee;
+}
+
+.flow-head h2{
+  font-size:46px;
+  font-weight:900;
+  line-height:1.15;
+  margin:14px 0 18px;
+}
+
+.flow-head h2 span{
+  color:#0ea5e9;
+}
+
+.flow-head p{
+  font-size:18px;
+  line-height:1.7;
+  color:#cbd5e1;
+  font-weight:600;
+}
+
+/* BODY */
+.flow-wrapper{
+  display:grid;
+  grid-template-columns:80px 1fr;
+  gap:60px;
+  align-items:flex-start;
+}
+
+/* FLOW LINE */
+.flow-line{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:46px;
+}
+
+.flow-line::before{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:rgba(148,163,184,0.25);
+}
+
+.dot{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:#475569;
+  z-index:1;
+  transition:0.3s;
+}
+
+.dot.active{
+  background:#22d3ee;
+  box-shadow:0 0 0 6px rgba(34,211,238,0.25);
+}
+
+/* CONTENT */
+.flow-content{
+  display:flex;
+  flex-direction:column;
+  gap:36px;
+}
+
+.flow-step{
+  padding-bottom:18px;
+  border-bottom:1px solid rgba(148,163,184,0.15);
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.flow-step:last-child{
+  border-bottom:none;
+}
+
+.flow-step h3{
+  font-size:22px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.flow-step p{
+  font-size:16.5px;
+  line-height:1.6;
+  color:#cbd5e1;
+}
+
+.flow-step.active h3{
+  color:#22d3ee;
+}
+
+/* HOVER */
+.flow-step:hover{
+  transform:translateX(6px);
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .features-flow{
+    padding:80px 6%;
+  }
+
+  .flow-wrapper{
+    grid-template-columns:1fr;
+  }
+
+  .flow-line{
+    display:none;
+  }
+
+  .flow-head h2{
+    font-size:34px;
+  }
+}
+</style>
+
+<script>
+const steps = document.querySelectorAll('.flow-step');
+const dots = document.querySelectorAll('.dot');
+
+steps.forEach((step, index) => {
+  step.addEventListener('mouseenter', () => {
+    steps.forEach(s => s.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
+
+    step.classList.add('active');
+    dots[index].classList.add('active');
+  });
+});
+</script>
+
+<!-- ================= USE CASES : SIGNAL → INSIGHT → OUTCOME ================= -->
+<section class="usecases-signals" id="use-cases">
+
+  <!-- HEADER -->
+  <div class="signals-header">
+    <span class="signals-tag">USE CASES</span>
+    <h2>
+      From Early Signals<br>
+      <span>To Confident Action</span>
+    </h2>
+    <p>
+      QualiPredict transforms raw operational data into early warnings,
+      clear insights, and practical actions — before quality issues
+      turn into costly failures.
+    </p>
+  </div>
+
+  <!-- SIGNAL BANDS -->
+  <div class="signals-stack">
+
+    <!-- BAND 1 -->
+    <div class="signal-band">
+      <div class="signal-left">
+        <span class="signal-label">SIGNAL</span>
+        <h3>Process Drift Detected</h3>
+      </div>
+
+      <div class="signal-middle">
+        <span class="signal-label">INSIGHT</span>
+        <p>
+          Subtle variation patterns indicate an increased probability
+          of defects in the next production cycle.
+        </p>
+      </div>
+
+      <div class="signal-right">
+        <span class="signal-label">OUTCOME</span>
+        <ul>
+          <li>Preventive adjustment</li>
+          <li>Reduced scrap</li>
+          <li>Stable output quality</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- BAND 2 -->
+    <div class="signal-band">
+      <div class="signal-left">
+        <span class="signal-label">SIGNAL</span>
+        <h3>Raw Material Variability</h3>
+      </div>
+
+      <div class="signal-middle">
+        <span class="signal-label">INSIGHT</span>
+        <p>
+          Input material characteristics show elevated risk
+          of spoilage or inconsistency under current conditions.
+        </p>
+      </div>
+
+      <div class="signal-right">
+        <span class="signal-label">OUTCOME</span>
+        <ul>
+          <li>Yield optimisation</li>
+          <li>Waste reduction</li>
+          <li>Improved consistency</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- BAND 3 -->
+    <div class="signal-band">
+      <div class="signal-left">
+        <span class="signal-label">SIGNAL</span>
+        <h3>Compliance Threshold Risk</h3>
+      </div>
+
+      <div class="signal-middle">
+        <span class="signal-label">INSIGHT</span>
+        <p>
+          Quality parameters approaching regulatory limits
+          require proactive intervention.
+        </p>
+      </div>
+
+      <div class="signal-right">
+        <span class="signal-label">OUTCOME</span>
+        <ul>
+          <li>Audit-ready data</li>
+          <li>Lower compliance risk</li>
+          <li>Explainable evidence</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- BAND 4 -->
+    <div class="signal-band">
+      <div class="signal-left">
+        <span class="signal-label">SIGNAL</span>
+        <h3>Operational Stress Events</h3>
+      </div>
+
+      <div class="signal-middle">
+        <span class="signal-label">INSIGHT</span>
+        <p>
+          Predictive indicators reveal upcoming stress points
+          in equipment and production flow.
+        </p>
+      </div>
+
+      <div class="signal-right">
+        <span class="signal-label">OUTCOME</span>
+        <ul>
+          <li>Preventive maintenance</li>
+          <li>Reduced downtime</li>
+          <li>Faster decisions</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+/* ================= USE CASES : SIGNAL MODEL ================= */
+
+.usecases-signals{
+  padding:110px 8%;
+  background:#ffffff;
+}
+
+/* HEADER */
+.signals-header{
+  max-width:900px;
+  margin-bottom:80px;
+}
+
+.signals-tag{
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:1.6px;
+  color:#0ea5e9;
+}
+
+.signals-header h2{
+  font-size:46px;
+  font-weight:900;
+  line-height:1.15;
+  margin:16px 0 18px;
+  color:#020617;
+}
+
+.signals-header h2 span{
+  color:#0ea5e9;
+}
+
+.signals-header p{
+  font-size:18px;
+  line-height:1.7;
+  color:#475569;
+  font-weight:600;
+}
+
+/* STACK */
+.signals-stack{
+  display:flex;
+  flex-direction:column;
+  gap:26px;
+}
+
+/* BAND */
+.signal-band{
+  display:grid;
+  grid-template-columns:1fr 1.4fr 1fr;
+  gap:30px;
+  padding:32px;
+  background:#f8fafc;
+  border-left:5px solid #0ea5e9;
+}
+
+/* LABEL */
+.signal-label{
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:1.4px;
+  color:#0ea5e9;
+  display:block;
+  margin-bottom:10px;
+}
+
+/* LEFT */
+.signal-left h3{
+  font-size:22px;
+  font-weight:900;
+  color:#020617;
+}
+
+/* MIDDLE */
+.signal-middle p{
+  font-size:16.5px;
+  line-height:1.65;
+  color:#334155;
+  font-weight:600;
+}
+
+/* RIGHT */
+.signal-right ul{
+  list-style:none;
+  padding:0;
+}
+
+.signal-right li{
+  font-size:16px;
+  font-weight:700;
+  color:#475569;
+  margin-bottom:8px;
+}
+
+.signal-right li::before{
+  content:"✔";
+  color:#0ea5e9;
+  margin-right:10px;
+  font-weight:900;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .usecases-signals{
+    padding:80px 6%;
+  }
+
+  .signals-header h2{
+    font-size:34px;
+  }
+
+  .signal-band{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+}
+</style>
+
+<script>
+console.log("Use Cases – Signal → Insight → Outcome model loaded");
+</script>
+<!-- ================= WHY QUALIPREDICT ================= -->
+<section class="why-qualipredict">
+
+  <div class="why-container">
+
+    <!-- LEFT CONTENT -->
+    <div class="why-content">
+      <span class="why-tag">WHY QUALIPREDICT</span>
+
+      <h2>
+        Built for <span>Real Manufacturing</span>,  
+        Not Generic AI
+      </h2>
+
+      <p class="why-intro">
+        QualiPredict is designed specifically for manufacturing and agro-food SMEs
+        that need early quality visibility, operational clarity, and confidence —
+        without complex systems or heavy infrastructure.
+      </p>
+
+      <ul class="why-points">
+        <li>
+          <strong>Predict Before Problems Appear</strong>
+          <span>Identify quality risks early — before defects, waste, or recalls occur.</span>
+        </li>
+        <li>
+          <strong>Explainable, Trust-Driven Insights</strong>
+          <span>No black-box decisions. Every recommendation is clear and reviewable.</span>
+        </li>
+        <li>
+          <strong>Designed for SME Reality</strong>
+          <span>Fast deployment, minimal disruption, and practical dashboards teams understand.</span>
+        </li>
+        <li>
+          <strong>Compliance Without Stress</strong>
+          <span>Audit-ready insights that support quality and regulatory confidence.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- RIGHT VISUAL PANEL -->
+    <div class="why-visual">
+      <div class="visual-box">
+        <div class="metric">
+          <span class="value">↓</span>
+          <p>Defects & Waste</p>
+        </div>
+        <div class="metric">
+          <span class="value">↑</span>
+          <p>Quality Confidence</p>
+        </div>
+        <div class="metric">
+          <span class="value">✔</span>
+          <p>Operational Control</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+/* ================= WHY QUALIPREDICT ================= */
+.why-qualipredict{
+  background:linear-gradient(180deg,#e0f2fe,#f8fbff);
+  padding:110px 8%;
+}
+
+.why-container{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.2fr 0.8fr;
+  gap:80px;
+  align-items:center;
+}
+
+/* LEFT */
+.why-tag{
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:1.6px;
+  color:#0284c7;
+}
+
+.why-content h2{
+  font-size:46px;
+  font-weight:900;
+  line-height:1.15;
+  margin:14px 0 22px;
+  color:#020617;
+}
+
+.why-content h2 span{
+  color:#0ea5e9;
+}
+
+.why-intro{
+  font-size:18px;
+  line-height:1.7;
+  color:#334155;
+  margin-bottom:36px;
+  max-width:620px;
+}
+
+.why-points{
+  list-style:none;
+  padding:0;
+}
+
+.why-points li{
+  margin-bottom:22px;
+  padding-left:34px;
+  position:relative;
+}
+
+.why-points li::before{
+  content:"✔";
+  position:absolute;
+  left:0;
+  top:2px;
+  font-weight:900;
+  color:#0ea5e9;
+}
+
+.why-points strong{
+  display:block;
+  font-size:17px;
+  font-weight:800;
+  color:#020617;
+  margin-bottom:4px;
+}
+
+.why-points span{
+  font-size:16px;
+  color:#475569;
+}
+
+/* RIGHT */
+.why-visual{
+  display:flex;
+  justify-content:center;
+}
+
+.visual-box{
+  background:#ffffff;
+  border-radius:18px;
+  padding:36px 32px;
+  width:100%;
+  max-width:340px;
+  box-shadow:0 30px 60px rgba(2,6,23,0.12);
+  border:1px solid #e2e8f0;
+}
+
+.metric{
+  text-align:center;
+  padding:22px 0;
+  border-bottom:1px solid #e5e7eb;
+}
+
+.metric:last-child{
+  border-bottom:none;
+}
+
+.metric .value{
+  font-size:34px;
+  font-weight:900;
+  color:#0ea5e9;
+}
+
+.metric p{
+  font-size:15px;
+  font-weight:700;
+  color:#334155;
+  margin-top:6px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .why-container{
+    grid-template-columns:1fr;
+    gap:50px;
+  }
+
+  .why-content h2{
+    font-size:34px;
+  }
+}
+</style>
+
+<script>
+console.log("Why QualiPredict section loaded – premium light-blue model");
+</script>
+<!-- ================= PREMIUM CTA ================= -->
+<section class="cta-elite" id="contact">
+
+  <div class="cta-container">
+
+    <div class="cta-eyebrow">GET STARTED</div>
+
+    <h2>
+      From Reactive Quality<br>
+      to <span>Predictive Confidence</span>
+    </h2>
+
+    <p class="cta-intro">
+      Quality issues rarely appear suddenly they build silently.
+      QualiPredict helps teams surface early warning signals,
+      understand why they occur, and act before failures impact
+      customers, compliance, or operations.
+    </p>
+
+    <!-- VALUE STRIP -->
+    <div class="cta-values">
+      <div class="value-item">
+        <strong>See problems earlier</strong>
+        <span>Detect hidden risks before defects or deviations escalate</span>
+      </div>
+      <div class="value-item">
+        <strong>Understand the cause</strong>
+        <span>Trace variation back to processes, inputs, and conditions</span>
+      </div>
+      <div class="value-item">
+        <strong>Act with confidence</strong>
+        <span>Support decisions with explainable, data-backed insights</span>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="cta-actions">
+      <a
+        href="mailto:qualipredict@gmail.com
+        ?subject=QualiPredict%20Demo%20Request
+        &body=Hello%20QualiPredict%20Team,%0D%0A%0D%0A
+        I%20would%20like%20to%20request%20a%20demo%20of%20QualiPredict%20to%20understand%20how%20it%20can%20support%20predictive%20quality%20monitoring%20and%20decision-making%20in%20our%20operations.%0D%0A%0D%0A
+        Our%20key%20interest%20is%20early%20risk%20detection,%20process%20variation%20insight,%20and%20improving%20overall%20quality%20reliability.%0D%0A%0D%0A
+        Please%20let%20us%20know%20the%20next%20steps.%0D%0A%0D%0A
+        Best%20regards,"
+        class="cta-btn-main"
+      >
+        Request a Demo
+      </a>
+
+      <a href="#use-cases" class="cta-btn-outline">
+        See Real Use Cases
+      </a>
+    </div>
+
+    <!-- REASSURANCE -->
+    <div class="cta-note">
+      No hard sell. No obligation.  
+      Just a practical discussion around your quality challenges.
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer-elite">
+  <div class="footer-wrap">
+    <div>© 2026 <strong>QualiPredict</strong></div>
+    <div>Intelligent Quality Analytics · Predict Quality. Prevent Failure.</div>
+  </div>
+</footer>
+
+<style>
+/* ================= CTA ================= */
+.cta-elite{
+  padding:140px 8%;
+  background:
+    radial-gradient(circle at top right, rgba(56,189,248,0.12), transparent 45%),
+    linear-gradient(135deg, #020617, #0b1220);
+  color:#ffffff;
+}
+
+.cta-container{
+  max-width:920px;
+  margin:auto;
+}
+
+.cta-eyebrow{
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:1.8px;
+  color:#38bdf8;
+  margin-bottom:16px;
+}
+
+.cta-elite h2{
+  font-size:50px;
+  font-weight:900;
+  line-height:1.12;
+  margin-bottom:24px;
+}
+
+.cta-elite h2 span{
+  color:#38bdf8;
+}
+
+.cta-intro{
+  font-size:18.5px;
+  line-height:1.75;
+  color:#e5e7eb;
+  max-width:820px;
+  margin-bottom:46px;
+}
+
+/* VALUE STRIP */
+.cta-values{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+  margin-bottom:56px;
+}
+
+.value-item{
+  padding-left:18px;
+  border-left:3px solid #38bdf8;
+}
+
+.value-item strong{
+  display:block;
+  font-size:17px;
+  font-weight:900;
+  margin-bottom:6px;
+}
+
+.value-item span{
+  font-size:15.5px;
+  color:#cbd5e1;
+  line-height:1.6;
+}
+
+/* ACTIONS */
+.cta-actions{
+  display:flex;
+  gap:22px;
+  margin-bottom:24px;
+  flex-wrap:wrap;
+}
+
+.cta-btn-main{
+  padding:16px 48px;
+  background:#38bdf8;
+  color:#020617;
+  font-weight:900;
+  text-decoration:none;
+  border-radius:6px;
+  transition:all 0.3s ease;
+}
+
+.cta-btn-main:hover{
+  background:#0ea5e9;
+  transform:translateY(-2px);
+}
+
+.cta-btn-outline{
+  padding:14px 44px;
+  border:2px solid #38bdf8;
+  color:#38bdf8;
+  font-weight:900;
+  text-decoration:none;
+  border-radius:6px;
+  transition:all 0.3s ease;
+}
+
+.cta-btn-outline:hover{
+  background:#38bdf8;
+  color:#020617;
+}
+
+/* NOTE */
+.cta-note{
+  font-size:14.5px;
+  color:#94a3b8;
+}
+
+/* ================= FOOTER ================= */
+.footer-elite{
+  background:#020617;
+  padding:28px 8%;
+}
+
+.footer-wrap{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  font-size:14px;
+  color:#94a3b8;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:900px){
+  .cta-elite h2{
+    font-size:34px;
+  }
+
+  .cta-values{
+    grid-template-columns:1fr;
+  }
+
+  .footer-wrap{
+    flex-direction:column;
+    gap:8px;
+    text-align:center;
+  }
+}
+</style>
+
+<script>
+console.log("Elite CTA loaded – enterprise narrative model");
+</script>
+</body>
+</html>
