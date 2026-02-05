@@ -447,7 +447,7 @@ footer{
 
 /* FOUNDER CARD */
 .founder-card{
-  background:#f8fafc;
+  background:#b7f5ff;
   border-left:6px solid #22d3ee;
   box-shadow:0 18px 48px rgba(0,0,0,0.08);
 }
@@ -491,15 +491,75 @@ footer{
   margin-bottom:14px;
 }
 
-/* MOBILE */
-@media(max-width:900px){
+/* ================= PREMIUM MOBILE ================= */
+@media (max-width: 900px) {
+
+  .about-founder{
+    padding:90px 7%;
+    background:#ffffff;
+  }
+
   .about-wrap{
     grid-template-columns:1fr;
-    gap:40px;
+    gap:56px; /* more breathing room */
+  }
+
+  /* ABOUT CONTENT */
+  .about-tag{
+    font-size:12px;
+    letter-spacing:1.4px;
   }
 
   .about-content h2{
-    font-size:32px;
+    font-size:34px;
+    line-height:1.22;
+    margin-bottom:20px;
+  }
+
+  .about-lead{
+    font-size:18px;
+    line-height:1.65;
+    margin-bottom:18px;
+  }
+
+  .about-content p{
+    font-size:16.8px;
+    line-height:1.75;
+    margin-bottom:16px;
+  }
+
+  /* FOUNDER CARD – KEEP DESKTOP FEEL */
+  .founder-card{
+    border-left:none;
+    border-top:6px solid #22d3ee;
+    box-shadow:0 20px 52px rgba(0,0,0,0.1);
+  }
+
+  .founder-header{
+    padding:16px 20px;
+  }
+
+  .founder-header h3{
+    font-size:16px;
+  }
+
+  .founder-body{
+    padding:30px;
+  }
+
+  .founder-body h4{
+    font-size:21px;
+  }
+
+  .founder-body span{
+    font-size:12.5px;
+    margin-bottom:16px;
+  }
+
+  .founder-body p{
+    font-size:16.2px;
+    line-height:1.7;
+    margin-bottom:14px;
   }
 }
 </style>
