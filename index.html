@@ -278,11 +278,104 @@ footer{
   font-size:14px;
 }
 
-/* ================= MOBILE ================= */
-@media(max-width:900px){
-  .hero h1{font-size:36px;}
-  .features-grid{grid-template-columns:1fr;}
-  nav ul{display:none;}
+/* ================= PREMIUM MOBILE ================= */
+@media (max-width: 900px){
+
+  /* GENERAL */
+  body{
+    font-size:16px;
+  }
+
+  section{
+    padding:90px 7%;
+  }
+
+  /* NAVBAR */
+  nav{
+    padding:14px 7%;
+  }
+
+  nav ul{
+    display:none; /* clean SaaS mobile */
+  }
+
+  .logo{
+    font-size:20px;
+  }
+
+  /* HERO */
+  .hero{
+    min-height:auto;
+    padding-top:120px;
+    padding-bottom:90px;
+    background-position:70% center; /* focus image better */
+  }
+
+  .hero-content{
+    max-width:100%;
+    padding:0;
+  }
+
+  .hero-tag{
+    font-size:12px;
+    letter-spacing:1.4px;
+    margin-bottom:16px;
+  }
+
+  .hero h1{
+    font-size:38px;
+    line-height:1.2;
+    margin-bottom:20px;
+  }
+
+  .hero p{
+    font-size:17px;
+    line-height:1.7;
+    margin-bottom:26px;
+  }
+
+  /* FEATURES LIST */
+  .hero-features{
+    margin-bottom:32px;
+  }
+
+  .hero-features li{
+    font-size:16px;
+    line-height:1.6;
+  }
+
+  /* BUTTONS */
+  .hero-btns{
+    flex-direction:column;
+    gap:14px;
+    width:100%;
+  }
+
+  .btn-primary,
+  .btn-outline{
+    width:100%;
+    text-align:center;
+    padding:16px 0;
+    font-size:15px;
+    border-radius:6px;
+  }
+
+  /* FEATURES GRID */
+  .features-grid{
+    grid-template-columns:1fr;
+    gap:26px;
+  }
+
+  .feature-box{
+    padding:30px;
+  }
+
+  /* HEADINGS GLOBAL */
+  h2{
+    font-size:32px;
+    line-height:1.25;
+  }
+
 }
 </style>
 </head>
@@ -743,34 +836,65 @@ console.log("About + Founder section loaded");
   margin-left:28px;
 }
 
-/* MOBILE */
-@media(max-width:900px){
+/* ================= PREMIUM MOBILE – LEARN SECTION ================= */
+@media (max-width: 900px){
+
+  /* WRAPPER */
   .learn-wrap{
     grid-template-columns:1fr;
-    gap:40px;
+    gap:48px;                 /* more breathing space */
   }
 
+  /* LEFT CONTENT */
+  .learn-left h2{
+    font-size:34px;
+    line-height:1.25;
+    margin-bottom:20px;
+  }
+
+  .learn-left p{
+    font-size:17px;
+    line-height:1.7;
+  }
+
+  /* RIGHT PANEL */
   .learn-right{
     border-left:none;
     padding-left:0;
-    border-top:3px solid #cfe8ff;
-    padding-top:32px;
+    border-top:4px solid #cfe8ff;   /* stronger visual anchor */
+    padding-top:36px;
+    position:relative;
   }
 
+  /* DECORATIVE ACCENT */
   .learn-right::before{
+    content:"";
+    position:absolute;
     left:0;
-    top:-3px;
-    width:60px;
-    height:3px;
+    top:-4px;
+    width:72px;               /* wider = premium */
+    height:4px;
+    background:#0ea5e9;
+    border-radius:4px;
   }
 
-  .learn-left h2{
-    font-size:32px;
+  /* INSIGHTS */
+  .insight{
+    padding-left:0;
+  }
+
+  .insight h4{
+    font-size:18px;
+    margin-bottom:6px;
   }
 
   .insight p{
     margin-left:0;
+    font-size:16.5px;
+    line-height:1.65;
+    color:#475569;
   }
+
 }
 </style>
 
@@ -973,23 +1097,75 @@ console.log("Learn More section updated – blue background, no button");
   transform:translateX(6px);
 }
 
-/* MOBILE */
-@media(max-width:900px){
+/* ================= PREMIUM MOBILE – FEATURES FLOW ================= */
+@media (max-width: 900px){
+
+  /* SECTION SPACING */
   .features-flow{
-    padding:80px 6%;
+    padding:88px 6%;              /* balanced, premium spacing */
   }
 
+  /* LAYOUT */
   .flow-wrapper{
     grid-template-columns:1fr;
+    gap:44px;                     /* more breathing space */
   }
 
+  /* REMOVE CONNECTOR LINE (MOBILE) */
   .flow-line{
     display:none;
   }
 
-  .flow-head h2{
-    font-size:34px;
+  /* HEADER */
+  .flow-head{
+    margin-bottom:34px;
   }
+
+  .flow-head h2{
+    font-size:36px;               /* strong SaaS headline */
+    line-height:1.25;
+  }
+
+  .flow-head p{
+    font-size:17px;
+    line-height:1.7;
+    color:#475569;
+    max-width:100%;
+  }
+
+  /* FLOW ITEM CARD FEEL */
+  .flow-item{
+    background:#ffffff;
+    padding:28px;
+    border-radius:12px;
+    box-shadow:0 18px 42px rgba(2,6,23,0.08);
+    position:relative;
+  }
+
+  /* ACCENT BAR */
+  .flow-item::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:4px;
+    background:linear-gradient(90deg,#0ea5e9,#22d3ee);
+    border-radius:12px 12px 0 0;
+  }
+
+  /* FLOW TEXT */
+  .flow-item h4{
+    font-size:18px;
+    margin-bottom:10px;
+  }
+
+  .flow-item p{
+    font-size:16.5px;
+    line-height:1.65;
+    color:#475569;
+  }
+
 }
 </style>
 
@@ -1234,20 +1410,71 @@ steps.forEach((step, index) => {
   font-weight:900;
 }
 
-/* MOBILE */
-@media(max-width:900px){
+/* ================= PREMIUM MOBILE – USE CASES SIGNALS ================= */
+@media (max-width: 900px){
+
+  /* SECTION SPACING */
   .usecases-signals{
-    padding:80px 6%;
+    padding:88px 6%;
+  }
+
+  /* HEADER */
+  .signals-header{
+    margin-bottom:34px;
   }
 
   .signals-header h2{
-    font-size:34px;
+    font-size:36px;              /* bold SaaS headline */
+    line-height:1.25;
   }
 
+  .signals-header p{
+    font-size:17px;
+    line-height:1.7;
+    color:#475569;
+    max-width:100%;
+  }
+
+  /* SIGNAL GRID */
   .signal-band{
     grid-template-columns:1fr;
-    gap:18px;
+    gap:28px;                   /* more breathing space */
   }
+
+  /* SIGNAL CARD */
+  .signal{
+    background:#ffffff;
+    padding:26px 24px;
+    border-radius:14px;
+    box-shadow:0 18px 44px rgba(2,6,23,0.08);
+    position:relative;
+  }
+
+  /* TOP ACCENT STRIP */
+  .signal::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:4px;
+    background:linear-gradient(90deg,#0ea5e9,#22d3ee);
+    border-radius:14px 14px 0 0;
+  }
+
+  /* ICON / TITLE */
+  .signal h4{
+    font-size:18px;
+    margin-bottom:10px;
+    font-weight:900;
+  }
+
+  .signal p{
+    font-size:16.5px;
+    line-height:1.65;
+    color:#475569;
+  }
+
 }
 </style>
 
@@ -1432,16 +1659,53 @@ console.log("Use Cases – Signal → Insight → Outcome model loaded");
   margin-top:6px;
 }
 
-/* MOBILE */
-@media(max-width:900px){
+/* ================= PREMIUM MOBILE – WHY QUALIPREDICT ================= */
+@media (max-width: 900px){
+
+  /* LAYOUT */
   .why-container{
     grid-template-columns:1fr;
-    gap:50px;
+    gap:42px;                 /* tighter but intentional */
+    align-items:flex-start;
   }
 
-  .why-content h2{
-    font-size:34px;
+  /* CONTENT BLOCK */
+  .why-content{
+    padding:0;
   }
+
+  /* HEADING */
+  .why-content h2{
+    font-size:36px;           /* strong SaaS headline */
+    line-height:1.25;
+    font-weight:900;
+    margin-bottom:18px;
+  }
+
+  /* SUBTEXT / PARAGRAPH */
+  .why-content p{
+    font-size:17.5px;
+    line-height:1.75;
+    color:#475569;
+    max-width:100%;
+  }
+
+  /* OPTIONAL: VISUAL SEPARATOR */
+  .why-content::after{
+    content:"";
+    display:block;
+    width:64px;
+    height:4px;
+    margin-top:26px;
+    background:linear-gradient(90deg,#0ea5e9,#22d3ee);
+    border-radius:6px;
+  }
+
+  /* IF YOU HAVE A RIGHT PANEL / IMAGE */
+  .why-visual{
+    margin-top:10px;
+  }
+
 }
 </style>
 
@@ -1648,21 +1912,68 @@ console.log("Why QualiPredict section loaded – premium light-blue model");
   color:#94a3b8;
 }
 
-/* ================= MOBILE ================= */
-@media(max-width:900px){
-  .cta-elite h2{
-    font-size:34px;
+/* ================= PREMIUM MOBILE – CTA + FOOTER ================= */
+@media (max-width: 900px){
+
+  /* CTA SECTION */
+  .cta-elite{
+    padding:90px 6% 80px;
   }
 
+  .cta-elite h2{
+    font-size:36px;           /* strong, confident headline */
+    line-height:1.25;
+    font-weight:900;
+    margin-bottom:18px;
+  }
+
+  .cta-elite p{
+    font-size:17.5px;
+    line-height:1.75;
+    color:#e5e7eb;
+    max-width:100%;
+    margin-bottom:34px;
+  }
+
+  /* CTA VALUES */
   .cta-values{
     grid-template-columns:1fr;
+    gap:22px;                /* clean vertical rhythm */
+    margin-bottom:42px;
   }
 
+  .cta-value{
+    padding:18px 20px;
+    font-size:16px;
+    line-height:1.6;
+    background:rgba(255,255,255,0.06);
+    border-left:4px solid #0ea5e9;
+    border-radius:6px;
+  }
+
+  /* CTA BUTTON */
+  .cta-elite .cta-btn{
+    width:100%;
+    padding:16px 0;
+    font-size:15px;
+    font-weight:900;
+    border-radius:6px;
+  }
+
+  /* FOOTER */
   .footer-wrap{
     flex-direction:column;
-    gap:8px;
+    gap:12px;
     text-align:center;
+    padding-top:18px;
   }
+
+  .footer-wrap p,
+  .footer-wrap a{
+    font-size:14px;
+    color:#94a3b8;
+  }
+
 }
 </style>
 
