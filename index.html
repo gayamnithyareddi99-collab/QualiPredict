@@ -30,7 +30,7 @@ html,body{
   --muted:#94a3b8;
 }
 
-/* ================= NAVBAR ================= */
+/* ================= NAV ================= */
 nav{
   position:fixed;
   top:0;
@@ -47,23 +47,83 @@ nav{
 .logo{
   font-size:22px;
   font-weight:900;
-  color:#ffffff;
+  color:#fff;
 }
-.logo span{color:var(--cyan);}
+.logo span{color:#22d3ee;}
 
-nav ul{
+.nav-links{
   list-style:none;
   display:flex;
   gap:26px;
 }
 
-nav a{
-  text-decoration:none;
-  font-size:14px;
-  font-weight:700;
+.nav-links a{
   color:#cbd5e1;
+  text-decoration:none;
+  font-weight:700;
 }
-nav a:hover{color:var(--cyan);}
+
+/* ================= 9 DOT ICON ================= */
+.menu-dots{
+  display:none;
+  grid-template-columns:repeat(3,6px);
+  gap:6px;
+  cursor:pointer;
+}
+
+.menu-dots span{
+  width:6px;
+  height:6px;
+  background:#22d3ee;
+  border-radius:50%;
+}
+
+/* ================= MOBILE MENU ================= */
+.mobile-menu{
+  position:fixed;
+  inset:0;
+  background:rgba(2,6,23,0.97);
+  backdrop-filter:blur(12px);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:26px;
+  opacity:0;
+  pointer-events:none;
+  transition:0.35s ease;
+  z-index:2000;
+}
+
+.mobile-menu.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.mobile-menu a{
+  font-size:22px;
+  font-weight:900;
+  color:#e5e7eb;
+  text-decoration:none;
+}
+
+.mobile-menu a:hover{
+  color:#22d3ee;
+}
+
+.mobile-menu .highlight{
+  background:#0ea5e9;
+  padding:14px 34px;
+  border-radius:6px;
+  color:#fff;
+}
+
+/* ================= MOBILE ONLY ================= */
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .menu-dots{display:grid;}
+}
+
 
 /* ================= HERO ================= */
 .hero{
@@ -384,14 +444,33 @@ footer{
 
 <nav>
   <div class="logo">Quali<span>Predict</span></div>
-  <ul>
+
+  <!-- Desktop Menu -->
+  <ul class="nav-links">
     <li><a href="#home">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#features">Features</a></li>
     <li><a href="#use">Use Cases</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+
+  <!-- Mobile 9-dot Menu -->
+  <div class="menu-dots" id="menuToggle">
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+  </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#features">Features</a>
+  <a href="#use">Use Cases</a>
+  <a href="#ethical">Ethical AI</a>
+  <a href="#models">Models</a>
+  <a href="#learn">Learn More</a>
+  <a href="#contact" class="highlight">Request Demo</a>
+</div>
 
 <section class="hero" id="home">
   <div class="hero-content">
